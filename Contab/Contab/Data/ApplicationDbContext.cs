@@ -4,6 +4,7 @@ using System.Text;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using MySql.Data.MySqlClient;
+using Contab.Models;
 
 namespace Contab.Data
 {
@@ -13,6 +14,5 @@ namespace Contab.Data
             : base(options)
         {
         }
-
     }
 }

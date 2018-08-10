@@ -12367,11 +12367,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Ripper\\Documents\\GitHub\\Contab\\Contab\\Contab.csproj",
+      "projectUniqueName": "C:\\Users\\Ripper\\Documents\\GitHub\\Estudos\\Contab\\Contab\\Contab.csproj",
       "projectName": "Contab",
-      "projectPath": "C:\\Users\\Ripper\\Documents\\GitHub\\Contab\\Contab\\Contab.csproj",
+      "projectPath": "C:\\Users\\Ripper\\Documents\\GitHub\\Estudos\\Contab\\Contab\\Contab.csproj",
       "packagesPath": "C:\\Users\\Ripper\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Ripper\\Documents\\GitHub\\Contab\\Contab\\obj\\",
+      "outputPath": "C:\\Users\\Ripper\\Documents\\GitHub\\Estudos\\Contab\\Contab\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

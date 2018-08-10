@@ -61,16 +61,16 @@
                                         @Html.DisplayNameFor(model => model.Name)
                                     </th>
                                     <th>
-                                        @Html.DisplayNameFor(model => model.Gender)
+                                        @Html.DisplayNameFor(model => model.GenderName)
                                     </th>
                                     <th>
                                         @Html.DisplayNameFor(model => model.Salary)
                                     </th>
                                     <th>
-                                        @Html.DisplayNameFor(model => model.Departament)
+                                        @Html.DisplayNameFor(model => model.DepartamentName)
                                     </th>
                                     <th>
-                                        @Html.DisplayNameFor(model => model.Profession)
+                                        @Html.DisplayNameFor(model => model.ProfessionName)
                                     </th>
                                     <th>
                                         @Html.DisplayNameFor(model => model.Email)
@@ -78,7 +78,6 @@
                                     <th>
                                         @Html.DisplayNameFor(model => model.Phone)
                                     </th>
-
                                     <th></th>
                                 </tr>
                             </thead>
@@ -90,23 +89,23 @@
                                         @Html.DisplayFor(modelItem => item.Name)
                                     </td>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.Gender)
+                                        @Html.DisplayFor(modelItem => item.GenderName)
                                     </td>
                                     <td>
                                         @Html.DisplayFor(modelItem => item.Salary)
                                     </td>
-                                    <th>
-                                        @Html.DisplayFor(modelItem => item.Departament)
-                                    </th>
-                                    <th>
-                                        @Html.DisplayFor(modelItem => item.Profession)
-                                    </th>
-                                    <th>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.DepartamentName)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.ProfessionName)
+                                    </td>
+                                    <td>
                                         @Html.DisplayFor(modelItem => item.Email)
-                                    </th>
-                                    <th>
+                                    </td>
+                                    <td>
                                         @Html.DisplayFor(modelItem => item.Phone)
-                                    </th>
+                                    </td>
                                     <td>
                                         @Html.ActionLink("Edit", "Edit", new { item.ID }, new { @class = "btn btn-primary btn-xs" }) |
                                         @Html.ActionLink("Details", "Details", new { item.ID }, new { @class = "btn btn-warning btn-xs" }) |

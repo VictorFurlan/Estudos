@@ -13,9 +13,12 @@ namespace Contab.Models
         [Required]
         [DisplayName("Nome")]
         public string Name { get; set; }
+
+        public int GenderId { get; set; }
         [Required]
         [DisplayName("Gênero")]
-        public int Gender { get; set; }
+        public string GenderName { get; set; }
+
         [Required]
         [DisplayName("Salário")]
         [DataType(DataType.Currency)]
@@ -28,12 +31,17 @@ namespace Contab.Models
         [DisplayName("Telefone")]
         [DataType(DataType.PhoneNumber)]
         public string Phone { get; set; }
+
+        public int DepartamentId { get; set; }
         [Required]
         [DisplayName("Departamento")]
-        public int Departament { get; set; }
+        public string DepartamentName { get; set; }
+
+
+        public int ProfessionId { get; set; }
         [Required]
         [DisplayName("Cargo")]
-        public int Profession { get; set; }
+        public String ProfessionName { get; set; }
 
     }
 }

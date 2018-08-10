@@ -1,5 +1,4 @@
 ﻿@model Contab.Models.Employee
-
 @{
     ViewData["Title"] = "Create";
 }
@@ -63,13 +62,30 @@
                                         <span asp-validation-for="Name" class="text-danger"></span>
                                     </div>
                                     <div class="form-group">
-                                        <label asp-for="Gender" class="control-label"></label>
-                                        <select asp-for="Gender" class="form-control">
+                                        <label asp-for="GenderName" class="control-label"></label>
+                                        <select asp-for="GenderId" class="form-control">
                                             <option value="">-- Select Gender --</option>
-                                            <option value="Masculino">Masculino</option>
-                                            <option value="Feminino">Feminino</option>
+                                            <option value="1">Masculino</option>
+                                            <option value="2">Feminino</option>
                                         </select>
-                                        <span asp-validation-for="Gender" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="Phone" class="control-label"></label>
+                                        <input asp-for="Phone" class="form-control" />
+                                        <span asp-validation-for="Phone" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="Email" class="control-label"></label>
+                                        <input asp-for="Email" class="form-control" />
+                                        <span asp-validation-for="Email" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="DepartamentName" class="control-label"></label>
+                                        <input asp-for="DepartamentName" class="form-control" />
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="ProfessionName" class="control-label"></label>
+                                        <input asp-for="ProfessionName" class="form-control" />
                                     </div>
                                     <div class="form-group">
                                         <label asp-for="Salary" class="control-label"></label>

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Contab.Models;
+using Contab.Data;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -17,7 +18,6 @@ namespace Contab.Controllers
         {
             List<Employee> lstEmployee = new List<Employee>();
             lstEmployee = objemployee.GetAllEmployees().ToList();
-
             return View(lstEmployee);
         }
 
@@ -36,9 +36,7 @@ namespace Contab.Controllers
             }
             return View(employee);
         }
-
-        // GET: Employee/Create
-        public ActionResult Create()
+        public IActionResult Create()
         {
             return View();
         }
