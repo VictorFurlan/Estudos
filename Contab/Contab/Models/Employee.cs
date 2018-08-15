@@ -1,7 +1,10 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
+using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -23,25 +26,24 @@ namespace Contab.Models
         [DisplayName("Salário")]
         [DataType(DataType.Currency)]
         public float Salary { get; set; }
+
         [Required]
         [DisplayName("E-mail")]
         [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
+
         [Required]
         [DisplayName("Telefone")]
         [DataType(DataType.PhoneNumber)]
         public string Phone { get; set; }
 
         public int DepartamentId { get; set; }
-        [Required]
         [DisplayName("Departamento")]
-        public string DepartamentName { get; set; }
-
+        public string DepartName { get; set; }
 
         public int ProfessionId { get; set; }
-        [Required]
         [DisplayName("Cargo")]
-        public String ProfessionName { get; set; }
+        public String ProfName { get; set; }
 
     }
 }

@@ -6,19 +6,29 @@ using Contab.Models;
 using Contab.Data;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Contab.Controllers
 {
     public class EmployeeController : Controller
     {
         EmployeeDataAccessLayer objemployee = new EmployeeDataAccessLayer();
+        Gender objgender = new Gender();
+
+        List<Employee> lstemployee = new List<Employee>();
 
         // GET: /<controller>/
         public IActionResult Index()
         {
-            List<Employee> lstEmployee = new List<Employee>();
-            lstEmployee = objemployee.GetAllEmployees().ToList();
-            return View(lstEmployee);
+            var model = new MyViewModel {
+                employee = new Employee(),
+                departments = new Departament(),
+                gender = new Gender(),
+                profession = new Profession(),
+                lstemployee = objemployee.GetAllEmployees().ToList(),
+            };
+
+            return View(model);
         }
 
         // GET: Employee/Details/5
@@ -38,13 +48,34 @@ namespace Contab.Controllers
         }
         public IActionResult Create()
         {
-            return View();
+            ViewBag.Depart = new SelectList
+                (
+                    new Departament().GetAllDepartaments(),
+                    "DepartamentId",
+                    "DepartName"
+                );
+
+            ViewBag.Prof = new SelectList
+                (
+                    new Profession().GetAllProfessions(),
+                    "ProfessionId",
+                    "ProfName"
+                );
+
+            var model = new MyViewModel
+            {
+                employee = new Employee(),
+                departments = new Departament(),
+                gender = new Gender(),
+                profession = new Profession(),
+                lstemployee = objemployee.GetAllEmployees().ToList(),
+            };
+
+            return View(model);
         }
 
-        // POST: Employee/Create
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public IActionResult Create([Bind] Employee employee)
+        public IActionResult Create([Bind] MyViewModel employee)
         {
             if (ModelState.IsValid)
             {
@@ -113,5 +144,6 @@ namespace Contab.Controllers
             objemployee.DeleteEmployee(id);
             return RedirectToAction("Index");
         }
+
     }
 }

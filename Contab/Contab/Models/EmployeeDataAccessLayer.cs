@@ -4,7 +4,6 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
-using Contab.Data;
 
 namespace Contab.Models
 {
@@ -36,8 +35,8 @@ namespace Contab.Models
                     employee.Email = rdr["Email"].ToString();
                     employee.Phone = rdr["Phone"].ToString();
                     employee.GenderName = rdr["NameGender"].ToString();
-                    employee.DepartamentName = rdr["Departname"].ToString();
-                    employee.ProfessionName = rdr["Profname"].ToString();
+                    employee.DepartName = rdr["Departname"].ToString();
+                    employee.ProfName = rdr["Profname"].ToString();
 
                     lstemployee.Add(employee);
                 }
@@ -47,53 +46,24 @@ namespace Contab.Models
         }
 
         //To Add new employee record    
-        public void AddEmployee(Employee employee)
+        public void AddEmployee(MyViewModel employee)
         {
             using (MySqlConnection con = new MySqlConnection(connectionString))
             {
-                con.Open();
-                string sqlQueryDepart = "SELECT LAST_INSERT_ID() FROM tblDepartament";
-                MySqlCommand cmdDepartID = new MySqlCommand(sqlQueryDepart, con);
-                MySqlDataReader rdrDpart = cmdDepartID.ExecuteReader();
-                int IdDepart = Convert.ToInt32(rdrDpart.Read());
-                con.Close();
-
-                con.Open();
-                string sqlQueryProf = "SELECT LAST_INSERT_ID() FROM tblProfession";
-                MySqlCommand cmdProfID = new MySqlCommand(sqlQueryProf, con);
-                MySqlDataReader rdrProf = cmdProfID.ExecuteReader();
-                int IdProf = Convert.ToInt32(rdrProf.Read());
-                con.Close();
-
-                MySqlCommand cmdDepart = new MySqlCommand("spAddDepartament", con);
-                cmdDepart.CommandType = CommandType.StoredProcedure;
-
-                MySqlCommand cmdProf = new MySqlCommand("spAddProfession", con);
-                cmdProf.CommandType = CommandType.StoredProcedure;
 
                 MySqlCommand cmd = new MySqlCommand("spAddEmployee", con);
                 cmd.CommandType = CommandType.StoredProcedure;
 
                 //--------------------ADD EMPLOYEE---------------------------
-                cmd.Parameters.AddWithValue("p_Name", employee.Name);
-                cmd.Parameters.AddWithValue("p_Salary", employee.Salary);
-                cmd.Parameters.AddWithValue("p_Email", employee.Email);
-                cmd.Parameters.AddWithValue("p_Phone", employee.Phone);
-                cmd.Parameters.AddWithValue("p_Gender", employee.GenderId);
-                cmd.Parameters.AddWithValue("p_Departament", IdDepart+1);
-                cmd.Parameters.AddWithValue("p_Profession", IdProf+1);
-
-                //--------------------ADD DEPARTAMENT---------------------------
-                cmdDepart.Parameters.AddWithValue("p_DepartamentId", IdDepart+1);
-                cmdDepart.Parameters.AddWithValue("p_Name", employee.DepartamentName);
-
-                //--------------------ADD PROFESSIONT---------------------------
-                cmdProf.Parameters.AddWithValue("p_ProfessionId", IdProf+1);
-                cmdProf.Parameters.AddWithValue("p_Name", employee.ProfessionName);
+                cmd.Parameters.AddWithValue("p_Name", employee.employee.Name);
+                cmd.Parameters.AddWithValue("p_Salary", employee.employee.Salary);
+                cmd.Parameters.AddWithValue("p_Email", employee.employee.Email);
+                cmd.Parameters.AddWithValue("p_Phone", employee.employee.Phone);
+                cmd.Parameters.AddWithValue("p_Gender", employee.employee.GenderId);
+                cmd.Parameters.AddWithValue("p_DepartamentId", employee.employee.DepartamentId);
+                cmd.Parameters.AddWithValue("p_ProfessionId", employee.employee.ProfessionId);
 
                 con.Open();
-                cmdDepart.ExecuteNonQuery();
-                cmdProf.ExecuteNonQuery();
                 cmd.ExecuteNonQuery();
                 con.Close();
             }
@@ -157,6 +127,52 @@ namespace Contab.Models
                 cmd.CommandType = CommandType.StoredProcedure;
 
                 cmd.Parameters.AddWithValue("p_EmpId", id);
+
+                con.Open();
+                cmd.ExecuteNonQuery();
+                con.Close();
+            }
+        }
+        public void AddDepartament(string depart)
+        {
+            using (MySqlConnection con = new MySqlConnection(connectionString))
+            {
+                con.Open();
+                string sqlQueryDepart = "SELECT MAX(DepartamentId) FROM tblDepartament";
+                MySqlCommand cmdDepartID = new MySqlCommand(sqlQueryDepart, con);
+                MySqlDataReader rdrDpart = cmdDepartID.ExecuteReader();
+                int IdDepart = Convert.ToInt32(rdrDpart.Read());
+                con.Close();
+
+                MySqlCommand cmd = new MySqlCommand("spAddDepartament", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                //--------------------ADD EMPLOYEE---------------------------
+                cmd.Parameters.AddWithValue("p_DepartName", depart);
+                cmd.Parameters.AddWithValue("p_DepartamentId", IdDepart + 1);
+
+                con.Open();
+                cmd.ExecuteNonQuery();
+                con.Close();
+            }
+        }
+        public void AddProfession(Profession prof)
+        {
+            using (MySqlConnection con = new MySqlConnection(connectionString))
+            {
+                con.Open();
+                string sqlQueryProf = "SELECT MAX(ProfessionId) FROM tblProfession";
+                MySqlCommand cmdProfID = new MySqlCommand(sqlQueryProf, con);
+                MySqlDataReader rdrProf = cmdProfID.ExecuteReader();
+                int IdProf = Convert.ToInt32(rdrProf.Read());
+                con.Close();
+
+                MySqlCommand cmd = new MySqlCommand("spAddProfession", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                //--------------------ADD EMPLOYEE---------------------------
+                cmd.Parameters.AddWithValue("p_ProfName", prof.ProfName);
+                cmd.Parameters.AddWithValue("p_ProfessionId", IdProf + 1);
 
                 con.Open();
                 cmd.ExecuteNonQuery();

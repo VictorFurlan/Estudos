@@ -1,7 +1,4 @@
-﻿@model Contab.Models.Employee
-@{
-    ViewData["Title"] = "Create";
-}
+﻿@model Contab.Models.MyViewModel
 
 @section Scripts {
     <!-- jQuery -->
@@ -53,50 +50,70 @@
                         <h4>Funcionário</h4>
                         <hr />
                         <div class="row">
-                            <div class="col-md-4">
+                            <div class="col-lg-6">
                                 <form asp-action="Create">
                                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                                     <div class="form-group">
-                                        <label asp-for="Name" class="control-label"></label>
-                                        <input asp-for="Name" class="form-control" />
-                                        <span asp-validation-for="Name" class="text-danger"></span>
+                                        @Html.DisplayNameFor(model => model.employee.Name)
+                                        @Html.TextBoxFor(m => m.employee.Name)
                                     </div>
                                     <div class="form-group">
-                                        <label asp-for="GenderName" class="control-label"></label>
-                                        <select asp-for="GenderId" class="form-control">
-                                            <option value="">-- Select Gender --</option>
-                                            <option value="1">Masculino</option>
-                                            <option value="2">Feminino</option>
-                                        </select>
+                                        @Html.DropDownListFor(m => m.gender.GenderId, new SelectList(Model.gender.Genderoptions, "GenderId", "GenderName", Model.gender.Genderoptions.First().GenderId))
                                     </div>
                                     <div class="form-group">
-                                        <label asp-for="Phone" class="control-label"></label>
-                                        <input asp-for="Phone" class="form-control" />
-                                        <span asp-validation-for="Phone" class="text-danger"></span>
+                                        @Html.DisplayNameFor(model => model.employee.Phone)
+                                        @Html.TextBoxFor(m => m.employee.Phone)
                                     </div>
                                     <div class="form-group">
-                                        <label asp-for="Email" class="control-label"></label>
-                                        <input asp-for="Email" class="form-control" />
-                                        <span asp-validation-for="Email" class="text-danger"></span>
+                                        @Html.DisplayNameFor(model => model.employee.Email)
+                                        @Html.TextBoxFor(m => m.employee.Email)
                                     </div>
                                     <div class="form-group">
-                                        <label asp-for="DepartamentName" class="control-label"></label>
-                                        <input asp-for="DepartamentName" class="form-control" />
+                                            @Html.AntiForgeryToken()
+                                        <div>
+                                            @Html.DisplayNameFor(model => model.employee.DepartName)
+                                            @*Passando o Nome da ViewBag*@
+                                            @Html.DropDownList("Depart", "Selecione")
+                                        </div>
                                     </div>
                                     <div class="form-group">
-                                        <label asp-for="ProfessionName" class="control-label"></label>
-                                        <input asp-for="ProfessionName" class="form-control" />
+                                            @Html.AntiForgeryToken()
+                                        <div>
+                                            @Html.DisplayNameFor(model => model.employee.ProfName)
+                                            @*Passando o Nome da ViewBag*@
+                                            @Html.DropDownList("Prof", "Selecione")
+                                        </div>
                                     </div>
                                     <div class="form-group">
-                                        <label asp-for="Salary" class="control-label"></label>
-                                        <input asp-for="Salary" class="form-control" />
-                                        <span asp-validation-for="Salary" class="text-danger"></span>
+                                        @Html.DisplayNameFor(model => model.employee.Salary)
+                                        @Html.TextBoxFor(m => m.employee.Salary)
                                     </div>
                                     <div class="form-group">
-                                        <input type="submit" value="Create" class="btn btn-default" />
+                                        <input type="submit" value="Create" class="btn btn-default"/>
                                     </div>
                                 </form>
                             </div>
+                            <form class="form-inline">
+                                <div class="col-lg-6" style="width:600px; margin-top:323px">
+                                    <div class="col">
+                                        @Html.DisplayNameFor(model => model.employee.DepartName)
+                                        @Html.TextBoxFor(m => m.employee.DepartName)
+                                        <div class="form-group">
+                                            <button type="submit" class="btn btn-primary mb-2">Submit</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                            <br>
+                            <form class="form-inline">
+                                <div class="col-lg-6" style="width:600px; margin-top:36px">
+                                    <div class="col">
+                                        @Html.DisplayNameFor(model => model.employee.ProfName)
+                                        @Html.TextBoxFor(m => m.employee.ProfName)
+                                        <button type="submit" class="btn btn-primary mb-2">Submit</button>
+                                    </div>
+                                </div>
+                            </form>
                         </div>
                         <div>
                             <a asp-action="Index">Voltar para Funcionários</a>

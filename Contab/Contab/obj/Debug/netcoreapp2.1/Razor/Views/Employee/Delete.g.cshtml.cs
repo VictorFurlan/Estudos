@@ -88,7 +88,7 @@ using Contab.Models;
             WriteLiteral("<!DOCTYPE html>\r\n<html lang=\"en\">\r\n");
             EndContext();
             BeginContext(550, 1154, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("head", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f3aebc227ef3478887a7c5d97ba3a33a", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("head", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "d497c041840d4e5ca966ac1fc50c361a", async() => {
                 BeginContext(556, 1141, true);
                 WriteLiteral(@"
     <meta charset=""utf-8"">
@@ -127,7 +127,7 @@ using Contab.Models;
             WriteLiteral("\r\n");
             EndContext();
             BeginContext(1706, 2471, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "2d11aebb4d7b4232ba5c8274fc2c5a48", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f7f1acb5cca444e4946ee9c79aa48af6", async() => {
                 BeginContext(1712, 603, true);
                 WriteLiteral(@"
     <div id=""wrapper"">
@@ -228,12 +228,12 @@ using Contab.Models;
                 WriteLiteral("\r\n                                </dd>\r\n                            </dl>\r\n\r\n                            ");
                 EndContext();
                 BeginContext(3550, 315, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "1f23623131d6479ab0d4e630f1d13646", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a4e5785ab7c547d0aafdc5556559ddd7", async() => {
                     BeginContext(3576, 34, true);
                     WriteLiteral("\r\n                                ");
                     EndContext();
                     BeginContext(3610, 36, false);
-                    __tagHelperExecutionContext = __tagHelperScopeManager.Begin("input", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "7bef16c31c6f4373a257d75f02bbc78a", async() => {
+                    __tagHelperExecutionContext = __tagHelperScopeManager.Begin("input", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "b8b110058da44ef0a9d4f8ae2515b648", async() => {
                     }
                     );
                     __Microsoft_AspNetCore_Mvc_TagHelpers_InputTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.TagHelpers.InputTagHelper>();
@@ -258,7 +258,7 @@ __Microsoft_AspNetCore_Mvc_TagHelpers_InputTagHelper.For = ModelExpressionProvid
                     WriteLiteral("\r\n                                <input type=\"submit\" value=\"Delete\" class=\"btn btn-default\" /> |\r\n                                ");
                     EndContext();
                     BeginContext(3778, 50, false);
-                    __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f2929cca726347769fde6210d7875620", async() => {
+                    __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "035ee0f8d8e04621b5bac59305ba1683", async() => {
                         BeginContext(3800, 24, true);
                         WriteLiteral("Voltar para Funcionários");
                         EndContext();
